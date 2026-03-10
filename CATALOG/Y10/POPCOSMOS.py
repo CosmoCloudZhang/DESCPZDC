@@ -43,6 +43,7 @@ def main(tag, folder):
     condition = condition & (magnitude1[tag] < mag_i_lsst) & (mag_i_lsst < magnitude2[tag])
     
     # Save
+    print(len(redshift[condition]))
     with h5py.File(os.path.join(catalog_folder, '{}/POPCOSMOS.hdf5'.format(tag)), 'w') as file:
         
         file.create_dataset('redshift', data=redshift[condition], dtype=numpy.float32)
